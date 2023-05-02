@@ -1,5 +1,6 @@
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
+import React from 'react';
 
 const Card = styled.li`
   padding: 10px;
@@ -14,6 +15,7 @@ interface IDraggableCardPros {
 }
 
 function DraggableCard({memo, index}:IDraggableCardPros) {
+  console.log("memo",memo);
   return (
     // Draggable의 key와 draggableId와 같아야 함 ☆☆☆
     <Draggable key={memo} draggableId={memo} index={index}>
@@ -30,4 +32,4 @@ function DraggableCard({memo, index}:IDraggableCardPros) {
   );
 }
 
-export default DraggableCard;
+export default React.memo(DraggableCard);
