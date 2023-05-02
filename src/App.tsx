@@ -1,12 +1,8 @@
-import {
-  DragDropContext,
-  Draggable,
-  Droppable,
-  DropResult,
-} from "react-beautiful-dnd";
+import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { memoState } from "./atom";
+import DraggableCard from "./Components/DraggableCard";
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,12 +26,6 @@ const Board = styled.ul`
   border-radius: 5px;
   min-width: 300px;
   min-height: 200px;
-`;
-const Card = styled.li`
-  padding: 10px;
-  background: ${(prop) => prop.theme.cardcolor};
-  border-radius: 5px;
-  margin-bottom: 10px;
 `;
 
 function App() {
@@ -62,19 +52,7 @@ function App() {
           {(provided /* 인자이니 이름 맘대로 */) => (
             <Board ref={provided.innerRef} {...provided.droppableProps}>
               {memos.map((memo, index) => (
-
-                // Draggable의 key와 draggableId와 같아야 함 ☆☆☆
-                <Draggable key={memo} draggableId={memo} index={index}>
-                  {(provided) => (
-                    <Card
-                      ref={provided.innerRef}
-                      {...provided.draggableProps} /* box의 코너에서만 잡고 이동 가능*/
-                      {...provided.dragHandleProps} /* 어딜 잡든 이동 가능 */
-                    >
-                      {memo}
-                    </Card>
-                  )}
-                </Draggable>
+                <DraggableCard key={memo} memo={memo} index={index}/>
               ))}
               {provided.placeholder}
             </Board>

@@ -1,0 +1,33 @@
+import { Draggable } from "react-beautiful-dnd";
+import styled from "styled-components";
+
+const Card = styled.li`
+  padding: 10px;
+  background: ${(prop) => prop.theme.cardcolor};
+  border-radius: 5px;
+  margin-bottom: 10px;
+`;
+
+interface IDraggableCardPros {
+  memo:string;
+  index:number;
+}
+
+function DraggableCard({memo, index}:IDraggableCardPros) {
+  return (
+    // Draggable의 key와 draggableId와 같아야 함 ☆☆☆
+    <Draggable key={memo} draggableId={memo} index={index}>
+      {(provided) => (
+        <Card
+          ref={provided.innerRef}
+          {...provided.draggableProps} /* box의 코너에서만 잡고 이동 가능*/
+          {...provided.dragHandleProps} /* 어딜 잡든 이동 가능 */
+        >
+          {memo}
+        </Card>
+      )}
+    </Draggable>
+  );
+}
+
+export default DraggableCard;
