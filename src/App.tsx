@@ -44,7 +44,7 @@ function App() {
         */}
         <Boards>
           {Object.keys(memos).map((boardId) => (
-            <Board boardIdx={boardId} key={boardId} memos={memos[boardId]} />
+            <Board boardId={boardId} key={boardId} memos={memos[boardId]} />
           ))}
         </Boards>
       </Wrapper>
