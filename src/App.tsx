@@ -1,8 +1,8 @@
-import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { memoState } from "./atom";
-import DraggableCard from "./Components/DraggableCard";
+import Board from "./Components/Board";
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,18 +14,10 @@ const Wrapper = styled.div`
   height: 100vh;
 `;
 
-// const Boards = styled.div`
-//   display: grid;
-//   width: 100px;
-//   grid-template-columns: repeat(3, 1fr);
-// `;
-
-const Board = styled.ul`
-  padding: 30px 10px;
-  background: ${(prop) => prop.theme.boardColor};
-  border-radius: 5px;
-  min-width: 300px;
-  min-height: 200px;
+const Boards = styled.div`
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
 `;
 
 function App() {
@@ -34,12 +26,12 @@ function App() {
   // 어떤 일이 일어났는지에 대한 정보로 많은 인자를 준다
   const onDragEnd = ({ draggableId, destination, source }: DropResult) => {
     if (!destination) return;
-    setMemos((oldMemos) => {
-      const returnMemo = [...oldMemos];
-      returnMemo.splice(source.index, 1);
-      returnMemo.splice(destination?.index, 0, draggableId);
-      return returnMemo;
-    });
+    // setMemos((oldMemos) => {
+    //   const returnMemo = [...oldMemos];
+    //   returnMemo.splice(source.index, 1);
+    //   returnMemo.splice(destination?.index, 0, draggableId);
+    //   return returnMemo;
+    // });
   };
 
   // li 요소가 이동 안할시 index.tsx에서 React.StrictMode제거
@@ -47,17 +39,14 @@ function App() {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Wrapper>
-        {/* Droppable과 Draggable 자식은 함수여야 한다 */}
-        <Droppable droppableId="one">
-          {(provided /* 인자이니 이름 맘대로 */) => (
-            <Board ref={provided.innerRef} {...provided.droppableProps}>
-              {memos.map((memo, index) => (
-                <DraggableCard key={memo} memo={memo} index={index}/>
-              ))}
-              {provided.placeholder}
-            </Board>
-          )}
-        </Droppable>
+        {/* Object.keys(obj) : 객체dml 키들을 배열로 반환 ex) Object.keys(obj).map((item)=>obj[item])
+            Object.keys(memos)로 객체의 키들을 배열로 반환. 반환된 배열에 대해 map() 사용시 각 값을 가지고 있는 배열 반환
+        */}
+        <Boards>
+          {Object.keys(memos).map((boardId) => (
+            <Board boardIdx={boardId} key={boardId} memos={memos[boardId]} />
+          ))}
+        </Boards>
       </Wrapper>
     </DragDropContext>
   );
