@@ -7,8 +7,8 @@ interface IMemoState {
 export const memoState = atom<IMemoState>({
   key: "memo",
   default: {
-    to_do : ["a","b"],
-    doing: ["c","d"],
-    done: ["f"],
+    "To Do" : ["a","b"],
+    Doing: ["c","d"],
+    Done: ["f"],
   },
 });

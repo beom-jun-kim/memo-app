@@ -7,12 +7,14 @@ const Wrapper = styled.ul`
   background: ${(prop) => prop.theme.boardColor};
   border-radius: 5px;
   min-width: 300px;
-  min-height: 200px;
 `;
 
 const Title = styled.div`
-  
-`
+  text-align:center;
+  font-weight: 600;
+  margin-bottom: 15px;
+  /* transform:translateY(-15px); */
+`;
 
 interface IBoardProps {
   memos: string[];
@@ -22,12 +24,12 @@ interface IBoardProps {
 function Board({ memos, boardId }: IBoardProps) {
   return (
     <div>
-      <Title>{boardId}</Title>
       <Droppable droppableId={boardId}>
         {(provided /* 인자이니 이름 맘대로 */) => (
           // innerRef, droppableProps : Droppable가 제공하는 속성
           // Droppable 컴포넌트의 드롭 영역으로 설정하고 해당영역을 제어
           <Wrapper ref={provided.innerRef} {...provided.droppableProps}>
+            <Title>{boardId}</Title>
             {memos.map((memo, index) => (
               <DraggableCard key={memo} memo={memo} index={index} />
             ))}
