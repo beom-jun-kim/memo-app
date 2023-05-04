@@ -39,8 +39,10 @@ function App() {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Wrapper>
-        {/* Object.keys(obj) : 객체dml 키들을 배열로 반환 ex) Object.keys(obj).map((item)=>obj[item])
-            Object.keys(memos)로 객체의 키들을 배열로 반환. 반환된 배열에 대해 map() 사용시 각 값을 가지고 있는 배열 반환
+        {/* Object.keys(obj) : 객체의 키들을 배열로 반환 ex) Object.keys(obj).map((item)=>obj[item])
+            Object.keys(memos)로 객체의 키들을 배열로 반환. (to_do,doing,done)
+            반환된 배열에 대해 map() 사용시 objName[배열로 반환된 키]으로 각 키에 대응하는 값을 반환가능
+            ex) memos[boardId]으로 선언할 경우 memos["to_do"] 이런식으로 되기에 각 값들을 반환한다
         */}
         <Boards>
           {Object.keys(memos).map((boardId) => (
