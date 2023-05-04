@@ -22,7 +22,7 @@ function DraggableCard({memo, index}:IDraggableCardPros) {
       {(provided) => (
         <Card
           ref={provided.innerRef}
-          {...provided.draggableProps} /* box의 코너에서만 잡고 이동 가능*/
+          {...provided.draggableProps} /* box의 코너에서만 잡고 이동 가능하다 ======*/
           {...provided.dragHandleProps} /* 어딜 잡든 이동 가능 */
         >
           {memo}
