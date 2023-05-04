@@ -28,10 +28,9 @@ function App() {
   const onDragEnd = (info: DropResult) => {
     console.log(info);
     const { draggableId, destination, source } = info;
-    if(!destination) return;
+    if (!destination) return;
     if (destination?.droppableId === source.droppableId) {
       setMemos((allBoards) => {
-        
         // 배열 복사 [...a[b]]
         // ...allBoards : default로 선언된 객체의 키
         // source.droppableId : default로 선언된 객체 키의 값 (배열)
@@ -44,19 +43,28 @@ function App() {
         boardCopy.splice(source.index, 1);
         boardCopy.splice(destination?.index, 0, draggableId);
         return {
-
           // 건드리지 않은 다른 board
           ...allBoards,
 
           // 변형된 복사 본사본.
           // [key] : 변수선언 (todo,doing,done등)
           // boardCopy: 복사한 배열
-          [source.droppableId] : boardCopy
-        }
+          [source.droppableId]: boardCopy,
+        };
       });
     }
-    if(destination.droppableId !== source.droppableId) {
-      
+    if (destination.droppableId !== source.droppableId) {
+      setMemos((allBoards) => {
+        const sourceBoard = [...allBoards[source.droppableId]];
+        const destBoard = [...allBoards[destination.droppableId]];
+        sourceBoard.splice(source.index, 1);
+        destBoard.splice(destination?.index, 0, draggableId);
+        return {
+          ...allBoards,
+          [source.droppableId]: sourceBoard,
+          [destination.droppableId]: destBoard,
+        };
+      });
     }
   };
 
