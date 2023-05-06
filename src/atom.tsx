@@ -1,14 +1,20 @@
 import { atom } from "recoil";
 
-interface IMemoState {
-  [key:string]:string[],
+export interface IMemo {
+  id:number;
+  text:string; 
 }
+
+interface IMemoState {
+  [key:string]:IMemo[],
+}
+
 
 export const memoState = atom<IMemoState>({
   key: "memo",
   default: {
-    "To Do" : ["a","b"],
-    Doing: ["c","d"],
-    Done: ["f"],
+    ToDO : [],
+    Doing: [],
+    Done: [],
   },
 });
