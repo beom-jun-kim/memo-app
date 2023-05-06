@@ -1,20 +1,23 @@
 import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
+
+const { persistAtom } = recoilPersist();
 
 export interface IMemo {
-  id:number;
-  text:string; 
+  id: number;
+  text: string;
 }
 
 interface IMemoState {
-  [key:string]:IMemo[],
+  [key: string]: IMemo[];
 }
-
 
 export const memoState = atom<IMemoState>({
   key: "memo",
   default: {
-    ToDO : [],
+    ToDO: [],
     Doing: [],
     Done: [],
   },
+  effects_UNSTABLE: [persistAtom],
 });
