@@ -91,3 +91,9 @@ function App() {
 }
 
 export default App;
+
+// 코드 챌린지
+// 1. css 수정
+// 2. 로컬 스토리지
+// 3. 보드 생성 기능 (form태그적용)
+// 4. 메모 삭제 기능
