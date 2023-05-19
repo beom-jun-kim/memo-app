@@ -12,6 +12,8 @@ const Wrapper = styled.div`
   min-width: 300px;
   display: flex;
   flex-direction: column;
+  overflow:hidden;
+  height: 300px;
 `;
 
 // styled component에게 isDraggingOver라는 prop을 받을 거라고 말해준다
@@ -25,6 +27,8 @@ const Area = styled.div<IAreaProps>`
   flex-grow: 1;
   transition: 0.3s;
   padding: 15px;
+  overflow-y:auto;
+  overflow-x:hidden;
 `;
 
 const Title = styled.div`
@@ -34,13 +38,20 @@ const Title = styled.div`
 `;
 
 const Form = styled.form`
-  padding: 0 15px;
+  display: flex;
+  padding: 15px;
   input {
     width: 100%;
-    height: 40px;
+    height: 35px;
     padding: 0 10px;
     border-radius: 5px;
     border: none;
+  }
+  button {
+    background: none;
+    border: none;
+    cursor:pointer;
+    font-size: 25px;
   }
 `;
 
@@ -92,7 +103,7 @@ function Board({ memos, boardId }: IBoardProps) {
           type="text"
           placeholder={`${boardId}을 입력하세요`}
         />
-        <button>작성</button>
+        <button>+</button>
       </Form>
       <Droppable droppableId={boardId}>
         {(provided, snapshot) => (

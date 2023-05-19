@@ -18,7 +18,7 @@ const Boards = styled.div`
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(3, 1fr);
-  height: 100vh;
+  /* height: 100vh; */
 `;
 
 function App() {

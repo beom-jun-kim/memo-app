@@ -34,6 +34,16 @@ const GlobalStyle = createGlobalStyle`
     font-family : 'Noto Sans', sans-serif;
     background:${(props) => props.theme.bgColor};
   }
+  div::-webkit-scrollbar {
+    width: 5px;
+  }
+  div::-webkit-scrollbar-thumb {
+    background: #3e404476;
+    border-radius: 5px; 
+  }
+  div::-webkit-scrollbar-track {
+      background: rgba(33, 122, 244, .1);
+  }
   a {
     text-decoration: none;
     color: inherit;
