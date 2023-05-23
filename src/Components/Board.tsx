@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   height: 500px;
   padding-top: 10px;
+  border: 1px solid ${(prop) => prop.theme.boardColor};
 `;
 
 // styled component에게 isDraggingOver라는 prop을 받을 거라고 말해준다
