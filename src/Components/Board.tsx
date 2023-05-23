@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   min-width: 300px;
   display: flex;
   flex-direction: column;
-  overflow:hidden;
+  overflow: hidden;
   height: 500px;
   padding-top: 10px;
 `;
@@ -24,19 +24,19 @@ const Area = styled.div<IAreaProps>`
       ? "#f6cadfa9"
       : prop.isDraggingFromThis
       ? "#fad0c9a2"
-      : "#fcf6f5"};
+      : prop.theme.boardColor};
   flex-grow: 1;
   transition: 0.3s;
   padding: 5px 15px 15px 15px;
-  overflow-y:auto;
-  overflow-x:hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const Title = styled.div`
   text-align: center;
   font-weight: 600;
   padding: 15px;
-  color: #2BAE66;
+  color: ${(prop) => prop.theme.bgColor};
   text-transform: uppercase;
 `;
 
@@ -56,7 +56,7 @@ const Form = styled.form`
   button {
     background: none;
     border: none;
-    cursor:pointer;
+    cursor: pointer;
     font-size: 25px;
     color: #a7a7a76a;
   }
