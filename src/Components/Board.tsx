@@ -13,20 +13,21 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow:hidden;
-  height: 300px;
+  height: 500px;
+  padding-top: 10px;
 `;
 
 // styled component에게 isDraggingOver라는 prop을 받을 거라고 말해준다
 const Area = styled.div<IAreaProps>`
   background-color: ${(prop) =>
     prop.isDraggingOver
-      ? "#dfe6e9"
+      ? "#f6cadfa9"
       : prop.isDraggingFromThis
-      ? "#b2bec3"
-      : "#74b9ff"};
+      ? "#fad0c9a2"
+      : "#fcf6f5"};
   flex-grow: 1;
   transition: 0.3s;
-  padding: 15px;
+  padding: 5px 15px 15px 15px;
   overflow-y:auto;
   overflow-x:hidden;
 `;
@@ -35,23 +36,29 @@ const Title = styled.div`
   text-align: center;
   font-weight: 600;
   padding: 15px;
+  color: #2BAE66;
+  text-transform: uppercase;
 `;
 
 const Form = styled.form`
   display: flex;
-  padding: 15px;
+  padding: 5px 15px 10px 15px;
   input {
     width: 100%;
-    height: 35px;
+    height: 25px;
     padding: 0 10px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     border: none;
+    border-bottom: 1px solid #a7a7a76a;
+    background: none;
+    outline: none;
   }
   button {
     background: none;
     border: none;
     cursor:pointer;
     font-size: 25px;
+    color: #a7a7a76a;
   }
 `;
 
@@ -101,7 +108,7 @@ function Board({ memos, boardId }: IBoardProps) {
         <input
           {...register("memo", { required: true })}
           type="text"
-          placeholder={`${boardId}을 입력하세요`}
+          placeholder={"내용을 입력하세요"}
         />
         <button>+</button>
       </Form>

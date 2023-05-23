@@ -3,14 +3,15 @@ import styled from "styled-components";
 import React from "react";
 
 const Card = styled.div<{ isDragging: boolean }>`
-  padding: 8px;
+  padding: 8px 15px;
   background: ${(props) =>
-    props.isDragging ? "green" : props.theme.cardcolor};
+    props.isDragging ? "#9edab9" : "#2BAE66"};
   border-radius: 5px;
   margin-bottom: 10px;
   box-shadow: ${(props) =>
     props.isDragging ? "2px 5px 5px rgba(0, 0, 0, 0.128)" : "none"};
-  font-size: 14px;
+  font-size: 15px;
+  color: #FCF6F5;
 `;
 
 interface IDraggableCardPros {
