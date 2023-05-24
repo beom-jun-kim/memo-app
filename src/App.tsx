@@ -26,7 +26,6 @@ function App() {
 
   // 어떤 일이 일어났는지에 대한 정보로 많은 인자를 준다
   const onDragEnd = (info: DropResult) => {
-    console.log(info);
     const { destination, source } = info;
     if (!destination) return;
     if (destination?.droppableId === source.droppableId) {
