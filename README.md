@@ -9,7 +9,7 @@ Trello 기능을 참고하여 만든 메모앱입니다
 <br>
 
 ## ✏️ 개발환경
-- **Programming** : React
+- **Programming** : React , TypeScript
 - **Library** : react-beautiful-dnd , react-hook-form , recoil , recoil-persist
 - **Deploy** : github
 <br>
