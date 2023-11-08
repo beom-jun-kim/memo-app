@@ -2,6 +2,9 @@
 Trello 기능을 참고하여 만든 메모앱입니다
 <br>
 <br>
+<img src="https://github.com/beom-jun-kim/memo-app/assets/84590988/e3af6ac4-abb8-4966-b658-6db420a2a267">
+<br>
+<br>
 
 ## 🕰️ 개발기간
 * 23.03.02일 - 23.04.01일
