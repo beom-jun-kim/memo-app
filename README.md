@@ -39,8 +39,6 @@ Trello 기능을 참고하여 만든 메모앱입니다
       </Wrapper>
 </DragDropContext>
 
-// =====================================================
-
 function DraggableCard({memo, index}) {
   return (
     <Draggable key={memo} draggableId={memo} index={index}>
@@ -57,4 +55,4 @@ function DraggableCard({memo, index}) {
   );
 }
 
-export default React.memo(DraggableCard);```
+export default React.memo(DraggableCard);
