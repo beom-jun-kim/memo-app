@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# 🖥️ 프로젝트소개
+Trello 기능을 참고하여 만든 메모앱입니다
+<br>
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🕰️ 개발기간
+* 23.03.02일 - 23.04.01일
+* <a href="https://github.com/users/beom-jun-kim/projects/4">개발계획- github projects tab</a>
+<br>
 
-## Available Scripts
+## ✏️ 개발환경
+- **Programming** : React
+- **Library** : react-beautiful-dnd , react-hook-form , recoil , recoil-persist
+- **Deploy** : github
+<br>
 
-In the project directory, you can run:
+## ⚙️ 주요기능
 
-### `npm start`
+### 드로그 앤 드롭
+- 드로그 앤 드롭시 컬러 변경
+- 로컬스토리지
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## <a href="https://blog.naver.com/rhrortpsxj12/223092587898">🗺️ react-beautiful-dnd 기본구조 - 주석설명 이동</a>
+```import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<DragDropContext onDragEnd={onDragEnd}>
+      <Wrapper>
+        <Droppable droppableId="one">
+          {(provided) => (
+            <Board ref={provided.innerRef} {...provided.droppableProps}>
+              {memos.map((memo, index) => (
+                <DraggableCard key={memo} memo={memo} index={index}/>
+              ))}
+              {provided.placeholder}
+            </Board>
+          )}
+        </Droppable>
+      </Wrapper>
+</DragDropContext>
 
-### `npm test`
+// =====================================================
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+function DraggableCard({memo, index}) {
+  return (
+    <Draggable key={memo} draggableId={memo} index={index}>
+      {(provided) => (
+        <Card
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          {memo}
+        </Card>
+      )}
+    </Draggable>
+  );
+}
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default React.memo(DraggableCard);```
